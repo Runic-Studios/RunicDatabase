@@ -1,0 +1,6 @@
+name: RunicDatabase
+version: 1.0.0
+api-version: 1.15
+main: com.runicrealms.plugin.database.RunicDatabase
+description: Common database plugin in Runic Realms
+author: Excel

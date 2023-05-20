@@ -14,6 +14,8 @@ dependencies {
     compileOnly(commonLibs.mongodbdrivercore)
     compileOnly(commonLibs.jedis)
     compileOnly(commonLibs.paper)
+    compileOnly(project(":Projects:Restart"))
+    compileOnly(project(":Projects:Common"))
 }
 
 java {

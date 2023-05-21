@@ -4,4 +4,6 @@ api-version: 1.15
 main: com.runicrealms.plugin.rdb.RunicDatabase
 description: Common database plugin in Runic Realms
 author: Excel
-depend: [ RunicCommon, RunicRestart ]
+depend:
+  - RunicCommon
+  - RunicRestart

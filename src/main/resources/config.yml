@@ -1,0 +1,2 @@
+connection-string: mongodb+srv://RunicCore:vggRBvA1MjNEw4pE@cluster0-mf2re.mongodb.net/test?retryWrites=true&w=majority
+database: writer

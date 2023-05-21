@@ -1,5 +1,6 @@
 package com.runicrealms.plugin.rdb;
 
+import com.runicrealms.plugin.rdb.event.DatabaseInitializeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,6 +14,24 @@ public class RunicDatabase extends JavaPlugin {
     private String connectionString;
 
     private RunicDatabaseAPI databaseAPI;
+
+    public static RunicDatabaseAPI getAPI() {
+        if (getInstance().databaseAPI == null)
+            throw new IllegalStateException("Attempting to access RunicDatabaseAPI before Core has defined its implementation!");
+        return getInstance().databaseAPI;
+    }
+
+    public static RunicDatabase getInstance() {
+        return instance;
+    }
+
+    public static String getDatabaseName() {
+        return getInstance().databaseName;
+    }
+
+    public static String getConnectionString() {
+        return getInstance().connectionString;
+    }
 
     @Override
     public void onEnable() {
@@ -28,26 +47,10 @@ public class RunicDatabase extends JavaPlugin {
         Bukkit.getLogger().log(Level.INFO, "[RunicDatabase] Loaded RunicDatabase");
     }
 
-
     public void setAPIImplementation(RunicDatabaseAPI databaseAPI) {
+        if (this.databaseAPI != null) throw new IllegalStateException("Already initialized RuincDatabaseAPI!");
         this.databaseAPI = databaseAPI;
-    }
-
-    public static RunicDatabaseAPI getAPI() {
-        if (getInstance().databaseAPI == null) throw new IllegalStateException("Attempting to access RunicDatabaseAPI before Core has defined its implementation!");
-        return getInstance().databaseAPI;
-    }
-
-    public static RunicDatabase getInstance() {
-        return instance;
-    }
-
-    public static String getDatabaseName() {
-        return getInstance().databaseName;
-    }
-
-    public static String getConnectionString() {
-        return getInstance().connectionString;
+        Bukkit.getPluginManager().callEvent(new DatabaseInitializeEvent());
     }
 
 }

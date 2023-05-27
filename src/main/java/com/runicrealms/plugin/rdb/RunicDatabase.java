@@ -40,7 +40,6 @@ public class RunicDatabase extends JavaPlugin {
         databaseName = this.getConfig().getString("database");
         if (databaseName == null) throw new IllegalStateException("Missing database name! Aborting startup.");
         connectionString = this.getConfig().getString("connection-string");
-        Bukkit.getLogger().severe("string is " + connectionString);
         if (connectionString == null) throw new IllegalStateException("Missing connection string! Aborting startup.");
 
         Bukkit.getLogger().log(Level.INFO, "[RunicDatabase] Loaded RunicDatabase");

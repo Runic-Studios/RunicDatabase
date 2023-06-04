@@ -20,6 +20,8 @@ dependencies {
     compileOnly(commonLibs.paper)
     compileOnly(project(":Projects:Restart"))
     compileOnly(project(":Projects:Common"))
+    compileOnly(commonLibs.log4jcore)
+    compileOnly(commonLibs.log4japi)
 }
 
 java {

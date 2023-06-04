@@ -1,6 +1,7 @@
 package com.runicrealms.plugin.rdb;
 
 import com.runicrealms.plugin.rdb.event.DatabaseInitializeEvent;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -49,6 +50,7 @@ public class RunicDatabase extends JavaPlugin {
         if (this.databaseAPI != null) throw new IllegalStateException("Already initialized RunicDatabaseAPI!");
         this.databaseAPI = databaseAPI;
         Bukkit.getPluginManager().callEvent(new DatabaseInitializeEvent());
+        Configurator.setLevel("org.mongodb.driver", org.apache.logging.log4j.Level.WARN);
     }
 
 }

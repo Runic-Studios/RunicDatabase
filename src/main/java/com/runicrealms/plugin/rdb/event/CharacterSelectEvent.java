@@ -1,9 +1,7 @@
 package com.runicrealms.plugin.rdb.event;
 
 import com.runicrealms.plugin.rdb.model.SessionDataMongo;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.scheduler.BukkitTask;
@@ -17,7 +15,7 @@ import java.util.List;
  *
  * @author Skyfallin
  */
-public class CharacterSelectEvent extends Event implements Cancellable {
+public class CharacterSelectEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final int slot;
@@ -43,7 +41,7 @@ public class CharacterSelectEvent extends Event implements Cancellable {
         this.corePlayerData = corePlayerData;
         this.bukkitTask = bukkitTask;
         this.pluginsToLoadData = new ArrayList<>();
-        Bukkit.getLogger().severe("is select event cancelled? " + isCancelled);
+//        Bukkit.getLogger().severe("is select event cancelled? " + isCancelled);
         // todo: the loading process should be instantiated earlier, like RIGHT NOW
     }
 
@@ -76,12 +74,10 @@ public class CharacterSelectEvent extends Event implements Cancellable {
         return slot;
     }
 
-    @Override
     public boolean isCancelled() {
         return isCancelled;
     }
 
-    @Override
     public void setCancelled(boolean isCancelled) {
         this.isCancelled = isCancelled;
     }

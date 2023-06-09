@@ -41,8 +41,6 @@ public class CharacterSelectEvent extends Event {
         this.corePlayerData = corePlayerData;
         this.bukkitTask = bukkitTask;
         this.pluginsToLoadData = new ArrayList<>();
-//        Bukkit.getLogger().severe("is select event cancelled? " + isCancelled);
-        // todo: the loading process should be instantiated earlier, like RIGHT NOW
     }
 
     public static HandlerList getHandlerList() {

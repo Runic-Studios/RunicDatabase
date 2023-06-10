@@ -1,6 +1,5 @@
 package com.runicrealms.plugin.rdb.event;
 
-import com.runicrealms.plugin.rdb.model.SessionDataRedis;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -14,26 +13,20 @@ public class CharacterQuitEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final int slot;
-    private final SessionDataRedis coreCharacterData;
 
     /**
      * @param player  who quit
      * @param slot    of the character
      * @param isAsync whether the event should be called async
      */
-    public CharacterQuitEvent(final Player player, final int slot, final SessionDataRedis coreCharacterData, boolean isAsync) {
+    public CharacterQuitEvent(final Player player, final int slot, boolean isAsync) {
         super(isAsync);
         this.player = player;
         this.slot = slot;
-        this.coreCharacterData = coreCharacterData;
     }
 
     public static HandlerList getHandlerList() {
         return handlers;
-    }
-
-    public SessionDataRedis getSessionDataRedis() {
-        return this.coreCharacterData;
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.runicrealms.plugin.rdb.api;
 import com.mongodb.client.MongoDatabase;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.UUID;
+
 public interface DataAPI {
 
     /**
@@ -23,5 +25,12 @@ public interface DataAPI {
      * * e.g. 10
      */
     int getMaxCharacterSlot();
+
+    /**
+     * Used when data is saved to prevent rapidly re-joining the game
+     *
+     * @param uuid of player to lockout
+     */
+    void preventLogin(UUID uuid);
 
 }

@@ -4,6 +4,7 @@ import com.runicrealms.plugin.rdb.model.SessionDataMongo;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class CharacterSelectEvent extends Event {
     a "handshake" for the loaded event to fire
      */
     private final List<String> pluginsToLoadData;
+    private ItemStack[] contents = null;
     private boolean isCancelled = false;
 
     /**
@@ -45,6 +47,14 @@ public class CharacterSelectEvent extends Event {
 
     public static HandlerList getHandlerList() {
         return handlers;
+    }
+
+    public ItemStack[] getInventoryContents() {
+        return contents;
+    }
+
+    public void setInventoryContents(ItemStack[] contents) {
+        this.contents = contents;
     }
 
     public BukkitTask getBukkitTask() {

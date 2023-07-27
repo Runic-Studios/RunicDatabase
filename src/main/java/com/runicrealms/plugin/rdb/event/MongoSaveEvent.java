@@ -1,6 +1,6 @@
 package com.runicrealms.plugin.rdb.event;
 
-import com.runicrealms.runicrestart.event.PreShutdownEvent;
+import com.runicrealms.plugin.runicrestart.event.PreShutdownEvent;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

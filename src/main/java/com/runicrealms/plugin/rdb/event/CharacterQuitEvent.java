@@ -13,16 +13,18 @@ public class CharacterQuitEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
     private final int slot;
+    private final boolean hasLoadedPlayerData;
 
     /**
      * @param player  who quit
      * @param slot    of the character
      * @param isAsync whether the event should be called async
      */
-    public CharacterQuitEvent(final Player player, final int slot, boolean isAsync) {
+    public CharacterQuitEvent(final Player player, final int slot, boolean isAsync, boolean hasLoadedPlayerData) {
         super(isAsync);
         this.player = player;
         this.slot = slot;
+        this.hasLoadedPlayerData = hasLoadedPlayerData;
     }
 
     public static HandlerList getHandlerList() {
@@ -42,4 +44,12 @@ public class CharacterQuitEvent extends Event {
         return this.slot;
     }
 
+    /**
+     * A boolean used to check if the user has valid player data in memory, used for item wipe bug debug
+     *
+     * @return check if the user has valid player data in memory
+     */
+    public boolean hasLoadedPlayerData() {
+        return this.hasLoadedPlayerData;
+    }
 }

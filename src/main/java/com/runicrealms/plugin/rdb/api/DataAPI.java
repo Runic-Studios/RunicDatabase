@@ -3,6 +3,7 @@ package com.runicrealms.plugin.rdb.api;
 import com.mongodb.client.MongoDatabase;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.Set;
 import java.util.UUID;
 
 public interface DataAPI {
@@ -32,5 +33,10 @@ public interface DataAPI {
      * @param uuid of player to lockout
      */
     void preventLogin(UUID uuid);
+
+    /**
+     * @return a set of players whose data is saving and should not be allowed to join the server
+     */
+    Set<UUID> getLockedOutPlayers();
 
 }

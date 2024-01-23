@@ -1,5 +1,7 @@
 package com.runicrealms.plugin.rdb;
 
+import com.runicrealms.plugin.rdb.database.DataHandlerAPI;
+import com.runicrealms.plugin.rdb.database.DataHandlerManager;
 import com.runicrealms.plugin.rdb.event.DatabaseInitializeEvent;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.bukkit.Bukkit;
@@ -13,11 +15,16 @@ public class RunicDatabase extends JavaPlugin {
     private String databaseName;
     private String connectionString;
     private RunicDatabaseAPI databaseAPI;
+    private DataHandlerAPI dataHandlerAPI;
 
     public static RunicDatabaseAPI getAPI() {
         if (getInstance().databaseAPI == null)
             throw new IllegalStateException("Attempting to access RunicDatabaseAPI before Core has defined its implementation!");
         return getInstance().databaseAPI;
+    }
+
+    public static DataHandlerAPI getDataHandlerAPI() {
+        return getInstance().dataHandlerAPI;
     }
 
     public static RunicDatabase getInstance() {
@@ -37,6 +44,8 @@ public class RunicDatabase extends JavaPlugin {
         instance = this;
         this.getConfig().addDefault("database", "writer");
         this.saveDefaultConfig();
+
+        dataHandlerAPI = new DataHandlerManager();
 
         databaseName = this.getConfig().getString("database");
         if (databaseName == null) throw new IllegalStateException("Missing database name! Aborting startup.");
